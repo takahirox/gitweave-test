@@ -14,4 +14,5 @@ python3 -m unittest discover -s tests
 
 - `add(a, b)` — returns `a + b`.
 - `subtract(a, b)` — returns `a - b`.
+- `multiply(a, b)` — returns `a * b`.
 - `divide(a, b)` — returns `a / b`; raises `ValueError` if `b` is zero.
