@@ -14,6 +14,16 @@ class CalcTests(unittest.TestCase):
         self.assertEqual(multiply(2, 3), 6)
         self.assertEqual(multiply(-4, 2.5), -10.0)
         self.assertEqual(multiply(7, 0), 0)
+        self.assertEqual(multiply(1.5, 2.0), 3.0)
+
+    def test_multiply_rejects_non_numeric(self):
+        for bad in ("a", None, True, False, [1], 1j):
+            with self.subTest(bad=bad, position="a"):
+                with self.assertRaisesRegex(TypeError, "argument 'a' must be an int or float"):
+                    multiply(bad, 3)
+            with self.subTest(bad=bad, position="b"):
+                with self.assertRaisesRegex(TypeError, "argument 'b' must be an int or float"):
+                    multiply(3, bad)
 
     def test_divide(self):
         self.assertEqual(divide(6, 3), 2)
