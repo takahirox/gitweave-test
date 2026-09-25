@@ -26,4 +26,6 @@ def divide(a, b):
 
 
 def power(base, exponent):
+    if base == 0 and exponent < 0:
+        raise ValueError("Cannot raise zero to a negative power")
     return base ** exponent

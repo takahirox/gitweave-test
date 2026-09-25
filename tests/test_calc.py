@@ -40,6 +40,12 @@ class CalcTests(unittest.TestCase):
         self.assertEqual(power(2, -1), 0.5)
         self.assertEqual(power(9, 0.5), 3.0)
 
+    def test_power_zero_negative_exponent(self):
+        for exponent in (-1, -2, -0.5):
+            with self.subTest(exponent=exponent):
+                with self.assertRaisesRegex(ValueError, "Cannot raise zero to a negative power"):
+                    power(0, exponent)
+
 
 if __name__ == "__main__":
     unittest.main()
