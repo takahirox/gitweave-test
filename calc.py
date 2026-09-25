@@ -23,3 +23,9 @@ def divide(a, b):
     if b == 0:
         raise ValueError("Cannot divide by zero")
     return a / b
+
+
+def power(base, exponent):
+    if base == 0 and exponent < 0:
+        raise ValueError("Cannot raise zero to a negative power")
+    return base ** exponent

@@ -1,6 +1,6 @@
 import unittest
 
-from calc import add, divide, multiply, subtract
+from calc import add, divide, multiply, power, subtract
 
 
 class CalcTests(unittest.TestCase):
@@ -32,6 +32,19 @@ class CalcTests(unittest.TestCase):
     def test_divide_by_zero(self):
         with self.assertRaisesRegex(ValueError, "Cannot divide by zero"):
             divide(1, 0)
+
+    def test_power(self):
+        self.assertEqual(power(2, 3), 8)
+        self.assertEqual(power(5, 0), 1)
+        self.assertEqual(power(-3, 2), 9)
+        self.assertEqual(power(2, -1), 0.5)
+        self.assertEqual(power(9, 0.5), 3.0)
+
+    def test_power_zero_negative_exponent(self):
+        for exponent in (-1, -2, -0.5):
+            with self.subTest(exponent=exponent):
+                with self.assertRaisesRegex(ValueError, "Cannot raise zero to a negative power"):
+                    power(0, exponent)
 
 
 if __name__ == "__main__":
